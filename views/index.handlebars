@@ -2,72 +2,55 @@
 <html>
     <head>
         <!--TabTitle--->
-        <title> Eat Da Burger!!</title>
-        <!---Tab image--->
-        <link rel="icon" href="/public:assetts/fast-food-white-castle.jpg">
-        <!---latest compiled and minified css--->
-            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-            <!--Custom Styling -->
-            <link rel ="stylesheet" href="public/assets/css/styl">
-     </head>
-<body>
-    <!-- Page Container -->
-    <div class="container">
-        <br>
+        <div class="text-center" id="top-bar">
+			<img src="/assets/img/burger-icon.png" class="burgerIcon" alt="A minimalist black and white burger image.">
+			<h2>Eat That Burger!</h2>
+		</div>
 
-        <!--Burger pic -->
-        <center>
-            <div class="row">
-        <img src="/public:assetts/fast-food-white-castle.jpg">
-        </div>
-        </center>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col text-center enter_section">
+			<form action="/burgers/create" method="POST">
+				<p>Enter the burger you want to eat and click "Submit".</p>
+				<input type="text" class="form-control" name="burger_name" value="" id="enter_text">
+				<button type="submit" class="btn btn-primary" id="text-enter-button">Submit</button>
+			</form>
 
-        <!--page Title-->
-        <center>
-            <h1 class="red_font"> Eat Da Burger!!<small class="tiny_text"> Would you like fries with that? </small></h1>
-         </center>
-               <br>
-      
+		</div>
+	</div>
+</div>
 
-      <!-- Burger Content from index.handlebars -->
-      {{{body}}}
-
-
-      <br><br>
-
-      <!-- Input New Burgers Form -->
-      <form action="burger/create" method="POST"> 
-        
-        <!-- Text Area Input -->
-        <div class="row">
-          <!-- Empty Div to help center textarea -->
-          <div class="col-md-3"></div> 
-
-          <!-- Burger Input Box -->
-          <div class="form-group col-md-6">
-            <center><label for="new_burger" class="red_font">Request a new burger and place your order!</label></center>
-            <textarea class="form-control" columns="8" rows="4" id="new_burger" name="burger_name"></textarea>
-          </div>
-
-          <!-- Empty Div to help center textarea -->
-          <div class="col-md-3"></div> 
-        </div>
-      
-        <!-- Submit Button -->
-        <center>
-          <button id="submit-button" type="submit" class="btn btn-danger">Place Order</button>
-        </center>
-
-      </form>
-
-      <br>
-
-    </div>
-
-    <!-- Link in jQuery -->
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-</body>
-
-
-
-</html>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col text-center">
+		<h2 class="subtitle">Burgers That Can Be Eaten</h2>
+			<div>
+			  {{#each burger_data}}
+			  	{{#unless this.devoured}}
+				<div>
+					<p>#{{this.id}}: {{this.burger_name}}
+					</p>
+				</div>
+				<div>
+					<form class="devour-form">
+						<input type="hidden" class="burger_id" type="text" value={{this.id}}><br>
+						<button type="submit" class="btn btn-primary btn-devour">Devour it!</button>
+					</form>
+				</div>
+				{{/unless}}
+			  {{/each}}
+			</div>
+		</div>
+		<div class="col text-center">
+		<h2 class="subtitle">Burgers That Have Been Eaten</h2>
+			  {{#each burger_data}}
+			  	{{#if this.devoured}}
+				  				<div>
+					<p>#{{this.id}}: {{this.burger_name}}
+					</p>
+			  		{{!-- <input class="form-control" type="text" placeholder="#{{this.id}} : {{this.burger_name}}" readonly> --}}
+				{{/if}}
+			  {{/each}}
+		</div>
+	</div>
+</div>
