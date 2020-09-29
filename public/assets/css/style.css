@@ -14,3 +14,58 @@ body {
     font-family: var(--body-font);
     color: var(--charcoal);
 }
+
+.burgerIcon {
+    width: 15vw;
+    height: auto;
+    margin-top: 2rem;
+    margin-bottom: 0.5rem;
+}
+.devour-form {
+    margin-bottom: 2rem;
+}
+
+.subtitle {
+    font-family: var(--title-font);
+    margin-bottom: 1rem;
+}
+#top-bar h2{
+    margin-bottom: 2rem;
+    font-family: var(--title-font);
+    font-size: 5rem;
+    color: var(--charcoal);
+}
+
+.btn-devour, #text-enter-button {
+    background-color: var(--lighter-gray);
+    color: var(--charcoal);
+    font-family: var(--body-font);
+    border-color: var(--gray);
+    border-width: 4px;
+    border-radius: 1px;
+}
+
+.btn-devour:hover, #text-enter-button:hover {
+    background-color: var(--gray);
+    color: var(--charcoal);
+    border-color: var(--darker-gray);
+
+}
+
+.btn-devour:active, #text-enter-button:active {
+    background-color: var(--darker-gray) !important;
+    color: var(--off-white) !important;
+    border-color: var(--darker-gray) !important;
+}
+
+#text-enter-button {
+    width: 10rem;
+}
+#enter_text {
+    width: 20rem;
+    margin: 1rem auto;
+}
+
+.enter_section {
+    margin-bottom: 2rem;
+}
